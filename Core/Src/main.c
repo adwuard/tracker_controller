@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "usbd_hid.h"
+#include "retarget.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -353,6 +354,10 @@ void process_keys()
     MX_USB_DEVICE_Init();
     MX_USART1_UART_Init();
     /* USER CODE BEGIN 2 */
+    
+    // enabling printf redirecting to uart device.
+    RetargetInit(&huart1);
+ 
     // Button_Debouncer_Init();
     HAL_GPIO_WritePin(USER_LED_GPIO_Port, USER_LED_Pin, 1);
 
